@@ -289,7 +289,7 @@ ssl_ctx_create(struct relayd *env)
 {
 	SSL_CTX	*ctx;
 
-	ctx = SSL_CTX_new(SSLv23_client_method());
+	ctx = SSL_CTX_new(TLS_client_method());
 	if (ctx == NULL) {
 		ssl_error("ssl_ctx_create", "cannot create context");
 		fatal("could not create SSL context");
@@ -482,7 +482,7 @@ ssl_ctx_fake_private_key(SSL_CTX *ctx, const void *data, size_t datalen,
 	 */
 	ret = SSL_CTX_use_PrivateKey(ctx, pkey);
 	if (!ret)
-		SSLerr(SSL_F_SSL_CTX_USE_PRIVATEKEY, ERR_R_SSL_LIB);
+		SSLerr(SSL_F_SSL_CTX_USE_PRIVATEKEY, ERR_LIB_SSL);
 
 	if (pkeyptr != NULL)
 		*pkeyptr = pkey;

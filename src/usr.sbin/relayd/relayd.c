@@ -45,11 +45,6 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <pwd.h>
-#ifdef __FreeBSD__
-#include <sha.h>
-#else
-#include <sha1.h>
-#endif
 #include <md5.h>
 
 #include <openssl/ssl.h>
