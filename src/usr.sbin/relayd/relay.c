@@ -2006,7 +2006,7 @@ relay_ssl_callback_dh(SSL *ssl, int export, int keylen)
 
 	/* Get the private key length from the cert */
 	if ((pkey = SSL_get_privatekey(ssl))) {
-		keytype = EVP_PKEY_type(EVP_PKEY_base_id(pkey));
+		keytype = EVP_PKEY_base_id(pkey);
 		if (keytype == EVP_PKEY_RSA || keytype == EVP_PKEY_DSA)
 			keylen = EVP_PKEY_bits(pkey);
 		else
