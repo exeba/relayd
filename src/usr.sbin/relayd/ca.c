@@ -174,7 +174,7 @@ ca_dispatch_relay(int fd, struct privsep_proc *p, struct imsg *imsg)
 {
 	struct ctl_keyop	 cko;
 	EVP_PKEY		*pkey;
-	RSA			*rsa;
+	RSA			*rsa = NULL;
 	u_char			*from = NULL, *to = NULL;
 	struct iovec		 iov[2];
 	int			 c = 0;

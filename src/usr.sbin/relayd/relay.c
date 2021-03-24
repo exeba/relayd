@@ -1978,7 +1978,6 @@ DH *
 relay_ssl_get_dhparams(int keylen)
 {
 	DH		*dh;
-	const char	*gen;
 
 	if ((dh = DH_new()) == NULL)
 		return (NULL);
@@ -2141,7 +2140,7 @@ relay_ssl_transaction(struct rsession *con, struct ctl_relay_event *cre)
 	struct relay		*rlay = con->se_relay;
 	struct protocol	*proto = rlay->rl_proto;
 	SSL			*ssl;
-	SSL_METHOD		*method;
+	const SSL_METHOD	*method;
 	void			(*cb)(int, short, void *);
 	u_int			 flag;
 
