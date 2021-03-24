@@ -45,6 +45,14 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <pwd.h>
+#ifdef __FreeBSD__
+// Declarations in <sha.h> conflict with <openssl/ssl.h>
+// Instead of an #import we declare only what we need
+char *
+SHA1_Data(const unsigned char *data, unsigned int len, char *buf);
+#else
+#include <sha1.h>
+#endif
 #include <md5.h>
 
 #include <openssl/ssl.h>
